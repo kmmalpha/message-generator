@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Romantic Message Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333333;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #messageOutput {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Romantic Message Generator</h1>
+    <label for="nameInput">What is your name?</label>
+    <input type="text" id="nameInput">
+    <button onclick="generateMessage()">Generate Message</button>
+    <p id="messageOutput"></p>
+
+    <script>
+        function generateRomanticMessage(name) {
+            const messages = [
+                "I love you more than words can say.",
+                "You are the light of my life.",
+                "I can't imagine my life without you.",
+                "You make me a better person.",
+                "I am so lucky to have you in my life.",
+                "'I don't wanna lose you now, or ever'",
+                "'You're my sun and moon. Girl you're everything.'",
+                "'A lot of pretty faces could waste time, but you're my dream girl'"
+            ];
+
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            let message = messages[randomIndex];
+            message = message.replace("name", name);
+
+            return message;
+        }
+
+        const viableNames = ["Buhlebendalo", "Buhle", "Serenity", "Alpha Serenity", "Ndalo"];
+        
+        function generateMessage() {
+            const name = document.getElementById("nameInput").value;
+            let message = "";
+
+            if (viableNames.includes(name)) {
+                message = generateRomanticMessage(name);
+            } else {
+                message = "Bye! This was not meant for you!";
+            }
+
+            document.getElementById("messageOutput").textContent = message;
+        }
+    </script>
+</body>
+</html>
